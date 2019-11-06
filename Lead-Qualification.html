@@ -310,7 +310,7 @@
 				<div class="container clearfix">
                                         
 					<div class="col_half">
-						&copy; 2018 Worldbridge Solutions Inc.<br>
+						&copy; <span id="yr"></span> Worldbridge Solutions Inc.<br>
 						
 					</div>
 
@@ -352,4 +352,9 @@
   ga('send', 'pageview');
 
 </script>
+<script>
+    var yr = document.getElementById("yr");
+    var d = new Date();
+    yr.textContent = d.getFullYear();
+    </script>
 </html>
