@@ -112,7 +112,7 @@
                                             <div class="promo promo-border promo-center bottommargin">
                                                 <h3>Call us today at <span>(302) 261-2872</span> or Email us at <span>info@worldbridgeonline.com</span></h3>
                                                 <span>We strive to provide Our Customers with World Class support to make their Demand Gen Programs Successful</span>
-                                                <a href="#" data-gsc-widget="116208" class="button button-xlarge">Message Us</a>
+                                                <a href="#" id="open-contact-form" class="button button-xlarge">Message Us</a>
                                             </div>
                                         </div>
                             
@@ -194,6 +194,182 @@
     ============================================= -->
     <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/cookie-consent.js"></script>
+
+    <!-- Plumsail Contact Form Modal -->
+    <div id="plumsail-contact-modal" class="plumsail-modal-overlay">
+        <div class="plumsail-modal-content">
+            <div class="plumsail-modal-header">
+                <h2>Send Us a Message</h2>
+                <button class="plumsail-modal-close">&times;</button>
+            </div>
+            <div class="plumsail-modal-body">
+                <div id="plumsail-form-q4d7">
+                    <div class="fd-form-loading"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .plumsail-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.7);
+            z-index: 99998;
+            padding: 20px;
+        }
+
+        .plumsail-modal-overlay.show {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .plumsail-modal-content {
+            background: #fff;
+            border-radius: 8px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plumsail-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+            background: #f8f9fa;
+            flex-shrink: 0;
+        }
+
+        .plumsail-modal-header h2 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 24px;
+        }
+
+        .plumsail-modal-close {
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: #999;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .plumsail-modal-close:hover {
+            color: #333;
+        }
+
+        .plumsail-modal-body {
+            padding: 0;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 400px;
+        }
+
+        /* Fix Plumsail form scaling */
+        #plumsail-form-q4d7 {
+            width: 100% !important;
+            height: 100% !important;
+            min-height: 400px !important;
+        }
+
+        #plumsail-form-q4d7 > div {
+            width: 100% !important;
+            transform-origin: top left !important;
+            transform: scale(1) !important;
+        }
+
+        /* Ensure iframe or form content fills properly */
+        .plumsail-modal-body iframe,
+        .plumsail-modal-body form,
+        .plumsail-modal-body > div > div {
+            width: 100% !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        @media (max-width: 768px) {
+            .plumsail-modal-content {
+                max-height: 95vh;
+                max-width: 95%;
+            }
+
+            .plumsail-modal-header {
+                padding: 15px 20px;
+            }
+
+            .plumsail-modal-header h2 {
+                font-size: 20px;
+            }
+
+            .plumsail-modal-body {
+                min-height: 350px;
+            }
+        }
+    </style>
+
+    <script type="text/javascript" src="https://forms.plumsail.com/api/widget/b03c27ec-095c-467d-a449-f50490c47a47"></script>
+    <script type="text/javascript">
+        // Initialize Plumsail form
+        var fd = new Plumsail.Form("#plumsail-form-q4d7", "b03c27ec-095c-467d-a449-f50490c47a47");
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('plumsail-contact-modal');
+            var openBtn = document.getElementById('open-contact-form');
+            var closeBtn = document.querySelector('.plumsail-modal-close');
+
+            // Open modal
+            if (openBtn) {
+                openBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Close modal with X button
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
 
 <script>
     var yr = document.getElementById("yr");
